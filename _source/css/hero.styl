@@ -1,0 +1,88 @@
+// ---- FONTS ---- //
+@font-face
+  font-family Otto
+  font-style normal
+  src url(assets/fonts/Otto.ttf)
+
+
+// ---- HERO ---- //
+.hero
+  position relative
+  height 100vh
+  border-right none
+  border-left none
+
+
+  // ---- Content ---- //
+  .content
+    z-index 100
+    display flex
+    align-items center
+    justify-content center
+    position absolute
+    top 0
+    height 100vh
+    width 100vw
+
+    .center
+      text-align center
+
+      h1, h3
+        color white
+        text-shadow 0 1px 5px #999
+
+      h1
+        margin-bottom -.15em
+        font-family Otto
+        font-size 13em
+        font-weight 400
+
+      h3
+        margin-top -.15em
+        padding-bottom 5em
+        font-size 2.5em
+        font-weight 300
+
+      img
+        position absolute
+        bottom 3.5em
+        height 3.5em
+        width 3.5em
+
+
+  // ---- Video ---- //
+  .no-video .video video,
+  .touch .video video
+    display none
+
+  .no-video .video .poster,
+  .touch .video .poster
+    display block !important
+
+  .video
+    position relative
+    bottom 0%
+    left 0%
+    height 100%
+    width 100%
+    overflow hidden
+    background #000
+
+  .video .poster img
+    width 100%
+    bottom 0
+    position absolute
+
+  .video .filter
+    z-index 100
+    position absolute
+    background rgba(0, 0, 0, 0.4)
+    width 100%
+
+  .video video
+    position absolute
+    z-index 0
+    bottom 0
+
+  .video video.fillWidth
+    width 100%

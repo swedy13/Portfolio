@@ -1,0 +1,96 @@
+body {
+  margin: 0px;
+  font-family: Roboto;
+}
+@font-face {
+  font-family: Otto;
+  font-style: normal;
+  src: url("assets/fonts/Otto.ttf");
+}
+.hero {
+  position: relative;
+  height: 100vh;
+  border-right: none;
+  border-left: none;
+}
+.hero .content {
+  z-index: 100;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+}
+.hero .content .center {
+  text-align: center;
+}
+.hero .content .center h1,
+.hero .content .center h3 {
+  color: #fff;
+  text-shadow: 0 1px 5px #999;
+}
+.hero .content .center h1 {
+  margin-bottom: -0.15em;
+  font-family: Otto;
+  font-size: 13em;
+  font-weight: 400;
+}
+.hero .content .center h3 {
+  margin-top: -0.15em;
+  padding-bottom: 5em;
+  font-size: 2.5em;
+  font-weight: 300;
+}
+.hero .content .center img {
+  position: absolute;
+  bottom: 3.5em;
+  height: 3.5em;
+  width: 3.5em;
+}
+.hero .no-video .video video,
+.hero .touch .video video {
+  display: none;
+}
+.hero .no-video .video .poster,
+.hero .touch .video .poster {
+  display: block !important;
+}
+.hero .video {
+  position: relative;
+  bottom: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+.hero .video .poster img {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+}
+.hero .video .filter {
+  z-index: 100;
+  position: absolute;
+  background: rgba(0,0,0,0.4);
+  width: 100%;
+}
+.hero .video video {
+  position: absolute;
+  z-index: 0;
+  bottom: 0;
+}
+.hero .video video.fillWidth {
+  width: 100%;
+}
