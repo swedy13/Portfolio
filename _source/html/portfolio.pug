@@ -1,10 +1,49 @@
 section.portfolio
   .filters
-    select.platform
-      option(disabled selected) Platform
+    .platform
+      button
+        p Platform
+        .arrow-down
+      ul
+        li
+          input(type="checkbox")
+          p Website
+        li
+          input(type="checkbox")
+          p Web App
+        li
+          input(type="checkbox")
+          p Mobile App
 
-    select.type
-      option(disabled selected) Type
+    .type
+      button
+        p Type
+        .arrow-down
+      ul
+        li
+          input(type="checkbox")
+          p Dashboards
+        li
+          input(type="checkbox")
+          p Landing Pages
+        li
+          input(type="checkbox")
+          p Marketplace
+        li
+          input(type="checkbox")
+          p Social Media
 
-    select.industry
-      option(disabled selected) Industry
+    .industry
+      button
+        p Industry
+        .arrow-down
+      ul
+        li
+          input(type="checkbox")
+          p Business
+        li
+          input(type="checkbox")
+          p Entertainment
+        li
+          input(type="checkbox")
+          p Sports

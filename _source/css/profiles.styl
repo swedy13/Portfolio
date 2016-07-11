@@ -1,0 +1,45 @@
+.profiles
+  display flex
+  flex-wrap wrap
+
+  .quora, .linkedin, .github, .upwork
+    display flex
+    align-items center
+    justify-content center
+    flex-wrap wrap
+    height 50vh
+    width 25vw
+    max-width 25%
+    background-size 25px
+    text-align center
+
+  .quora
+    background-color #b92b27
+
+  .linkedin
+    background-color #0077b5
+
+  .github
+    background-color #333
+
+  .upwork
+    background-color #37a000
+
+  .quora, .linkedin, .github, .upwork
+    .content
+      a, p
+        color white
+
+    .link
+      width 100%
+
+      button
+        padding 8px 24px
+        background-color white
+        outline none
+        border-radius 3px
+        border none
+        font-size .95em
+
+        &:hover
+          text-decoration underline

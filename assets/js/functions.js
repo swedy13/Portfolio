@@ -1,23 +1,27 @@
-//jQuery is required to run this code
+//---- MAIN METHODS ----//
 $(document).ready(function() {
-
+				// Hero Methods
 				randomizeVideo();
+				scaleVideoContainer();
 
-    scaleVideoContainer();
-
-    initBannerVideoSize('.video-container .poster img');
+				initBannerVideoSize('.video-container .poster img');
 				initBannerVideoSize('.video-container .filter');
-    initBannerVideoSize('.video-container video');
+				initBannerVideoSize('.video-container video');
 
-    $(window).on('resize', function() {
-        scaleVideoContainer();
-        scaleBannerVideoSize('.video-container .poster img');
+				$(window).on('resize', function() {
+								scaleVideoContainer();
+								scaleBannerVideoSize('.video-container .poster img');
 								scaleBannerVideoSize('.video-container .filter');
-        scaleBannerVideoSize('.video-container video');
-    });
+								scaleBannerVideoSize('.video-container video');
+				});
+
+				// Portfolio Methods
+				toggleFilters();
+				toggleCheckBoxes();
 });
 
 
+//---- HERO METHODS ----//
 function randomizeVideo() {
 				var videos = ['birdcatcher', 'Hello-World', 'One-Swan', 'Up'];
 
@@ -33,14 +37,12 @@ function randomizeVideo() {
 				}
 }
 
-
 function scaleVideoContainer() {
     var height = $(window).height() + 5;
     var unitHeight = parseInt(height) + 'px';
 
     $('.homepage-hero-module').css('height',unitHeight);
 }
-
 
 function initBannerVideoSize(element){
     $(element).each(function(){
@@ -73,3 +75,40 @@ function scaleBannerVideoSize(element){
         $('.homepage-hero-module .video-container video').addClass('fadeIn animated');
     });
 }
+
+
+//---- PORTFOLIO METHODS ----//
+function toggleFilters() {
+				$('.filters > div').click(function(e) {
+								e.stopPropagation();
+								var list = $(this).find('ul');
+								var target = $(event.target);
+
+								$(this).siblings().find('ul').slideUp(75);
+
+								if (list.css('display') === 'block') {
+												if (target.is('button') || target.parent().is('button')) {
+																list.slideUp(75);
+												}
+								}
+								else {
+												list.slideDown(75);
+								}
+				});
+
+				$(document).click(function() {
+								$('ul').slideUp(75);
+				});
+}
+
+function toggleCheckBoxes() {
+				$('.filters li').click(function(e) {
+								if (!$(event.target).is('input')) {
+												$(this).find('input').click();
+								}
+				});
+}
+
+
+
+
