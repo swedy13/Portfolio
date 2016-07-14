@@ -251,8 +251,9 @@ body {
   height: 50vh;
   width: 25vw;
   max-width: 25%;
-  background-size: 25px;
   text-align: center;
+  -webkit-transition: 0.25s;
+  transition: 0.25s;
 }
 .profiles .quora {
   background-color: #b92b27;
