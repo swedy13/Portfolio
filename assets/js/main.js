@@ -1,18 +1,18 @@
 $(document).ready(function() {
 				// Hero Methods
-				randomizeVideo();
-				scaleVideoContainer();
+				/*randomizeVideo();
+							scaleVideoContainer();
 
-				initBannerVideoSize('.video-container .poster img');
-				initBannerVideoSize('.video-container .filter');
-				initBannerVideoSize('.video-container video');
+							initBannerVideoSize('.video-container .poster img');
+							initBannerVideoSize('.video-container .filter');
+							initBannerVideoSize('.video-container video');
 
-				$(window).on('resize', function() {
-								scaleVideoContainer();
-								scaleBannerVideoSize('.video-container .poster img');
-								scaleBannerVideoSize('.video-container .filter');
-								scaleBannerVideoSize('.video-container video');
-				});
+							$(window).on('resize', function() {
+							scaleVideoContainer();
+							scaleBannerVideoSize('.video-container .poster img');
+							scaleBannerVideoSize('.video-container .filter');
+							scaleBannerVideoSize('.video-container video');
+							});*/
 
 				// Portfolio Methods
 				toggleFilters();

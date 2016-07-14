@@ -312,6 +312,11 @@ body {
   text-decoration: underline;
 }
 @media screen and (orientation: portrait) and (max-width: 767px) {
+  .profiles {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
   .profiles .quora,
   .profiles .linkedin,
   .profiles .github,
@@ -342,6 +347,8 @@ body {
     height: calc(40vh - 30px);
     width: -webkit-calc(50vw - 30px);
     width: calc(50vw - 30px);
+    max-width: -webkit-calc(50% - 30px);
+    max-width: calc(50% - 30px);
   }
   .profiles .quora .logo img,
   .profiles .linkedin .logo img,
@@ -350,7 +357,16 @@ body {
     max-width: 80%;
   }
 }
-@media screen and (orientation: landscape) and (max-width: 1023px) {
+@media screen and (orientation: landscape) and (max-width: 773px) {
+  .profiles {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 auto;
+        -ms-flex: 0 1 auto;
+            flex: 0 1 auto;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
   .profiles .quora,
   .profiles .linkedin,
   .profiles .github,
@@ -359,6 +375,7 @@ body {
     height: calc(100vh - 30px);
     width: -webkit-calc(50vw - 30px);
     width: calc(50vw - 30px);
+    max-width: 25%;
   }
   .profiles .quora .logo img,
   .profiles .linkedin .logo img,
@@ -367,7 +384,7 @@ body {
     max-width: 90%;
   }
 }
-@media screen and (orientation: landscape) and (min-width: 1024px) {
+@media screen and (orientation: landscape) and (min-width: 774px) {
   .profiles .quora,
   .profiles .linkedin,
   .profiles .github,

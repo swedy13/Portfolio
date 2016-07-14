@@ -54,6 +54,8 @@
 // Mobile
 @media screen and (orientation: portrait) and (max-width: 767px)
   .profiles
+    flex-wrap wrap
+
     .quora, .linkedin, .github, .upwork
       height calc(50vh - 30px)
       width calc(100vw - 30px)
@@ -70,6 +72,7 @@
     .quora, .linkedin, .github, .upwork
       height calc(40vh - 30px)
       width calc(50vw - 30px)
+      max-width calc(50% - 30px)
 
       .logo
         img
@@ -78,18 +81,22 @@
 
 // ---- LANDSCAPE ---- //
 // Mobile
-@media screen and (orientation: landscape) and (max-width: 1023px)
+@media screen and (orientation: landscape) and (max-width: 773px)
   .profiles
+    flex 0 1 auto
+    flex-wrap wrap
+
     .quora, .linkedin, .github, .upwork
       height calc(100vh - 30px)
       width calc(50vw - 30px)
+      max-width 25%
 
       .logo
         img
           max-width 90%
 
 // Tabet
-@media screen and (orientation: landscape) and (min-width: 1024px)
+@media screen and (orientation: landscape) and (min-width: 774px)
   .profiles
     .quora, .linkedin, .github, .upwork
       height calc(40vh - 30px)

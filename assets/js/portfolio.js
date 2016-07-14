@@ -47,7 +47,7 @@ function initBouncingPortfolio(width, height){
 				var circles = [];
 
 				// Portrait Variables
-				var cPos    = 200
+				var cPos    = 200;
 				var cMargin = 55;
 				var cSpeed		= 3;
 				var r							= x*.15;
@@ -57,7 +57,13 @@ function initBouncingPortfolio(width, height){
 				}
 
 				// Landscape Variables
-				if (y > x) {}
+				if (x > y) {
+
+								cPos    = y * (y / x) - 50;
+								cMargin = 100;
+								cSpeed		= 3;
+								r							= x*.075;
+				}
 
 				// Generating "circles" based on # of portfolio items
 				// x/y = starting coordinates, r = ball size, vx/vy = velocity
@@ -71,6 +77,7 @@ function initBouncingPortfolio(width, height){
 												vy:Math.random() * cSpeed + .25
 								});
 				}
+
 				requestAnimationFrame(draw);
 
 				function draw(){
