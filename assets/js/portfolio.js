@@ -39,31 +39,32 @@ function initBouncingPortfolio(width, height){
 				// container dimensions to scale with screen size
 				var x = width;
 				var y = height - 65;
-				canvas.width = x;
-				canvas.height = y;
-				var container = {x:0,y:0,width:x,height:y};
+				canvas.width = x-5;
+				canvas.height = y-5;
+				var container = {x:0,y:0,width:x-5,height:y-5};
 
 				// ---- Circles ---- //
 				var circles = [];
 
-				// Responsive variables
-				var cSize			= 100;
-				var cMargin = 0;
+				// Portrait Variables
+				var cPos    = 200
+				var cMargin = 55;
 				var cSpeed		= 3;
 				var r							= x*.15;
 
-				if (x > 500) {
-								cScale		= 500;
-								cMargin = 125;
-								r							= x * .075;
+				if (x > 400) {
+								cMargin = 100;
 				}
+
+				// Landscape Variables
+				if (y > x) {}
 
 				// Generating "circles" based on # of portfolio items
 				// x/y = starting coordinates, r = ball size, vx/vy = velocity
 				for (var i = 0; i < 5; i++) {
 								circles.push({
-												x:Math.random() * cSize + cMargin,
-												y:Math.random() * cSize + cMargin,
+												x:Math.random() * cPos + cMargin,
+												y:Math.random() * cPos + cMargin,
 												r:r,
 												color:Math.random()*3000,
 												vx:Math.random() * cSpeed + .25,

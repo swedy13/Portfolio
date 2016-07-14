@@ -2,16 +2,10 @@ body {
   margin: 0px;
   font-family: Roboto;
 }
-@font-face {
-  font-family: Otto;
-  font-style: normal;
-  src: url("assets/fonts/Otto.ttf");
-}
 .hero {
   position: relative;
   height: 100vh;
-  border-right: none;
-  border-left: none;
+  border: none;
 }
 .hero .content {
   z-index: 100;
@@ -38,26 +32,45 @@ body {
 }
 .hero .content .center h1,
 .hero .content .center h3 {
+  margin: 0;
   color: #fff;
-  text-shadow: 0 1px 5px #999;
+  text-shadow: 0 1px 5px #777;
 }
 .hero .content .center h1 {
-  margin-bottom: -0.15em;
   font-family: Otto;
-  font-size: 13em;
+  font-size: 7.5em;
   font-weight: 400;
+  line-height: 0.6;
 }
 .hero .content .center h3 {
-  margin-top: -0.15em;
-  padding-bottom: 5em;
-  font-size: 2.5em;
+  padding: 0.5em 0 2em;
+  font-size: 1.5em;
   font-weight: 300;
 }
 .hero .content .center img {
   position: absolute;
-  bottom: 3.5em;
+  bottom: 30px;
+  left: -webkit-calc(50% - 1.25em);
+  left: calc(50% - 1.25em);
   height: 3.5em;
   width: 3.5em;
+}
+.hero .video {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  max-height: 100%;
+  overflow: hidden;
+  background-color: #000;
 }
 .hero .no-video .video video,
 .hero .touch .video video {
@@ -67,33 +80,32 @@ body {
 .hero .touch .video .poster {
   display: block !important;
 }
-.hero .video {
-  position: relative;
-  bottom: 0%;
-  left: 0%;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background: #000;
+@media screen and (min-width: 668px) and (max-width: 773px) {
+  .hero .content .center h1 {
+    font-size: 8.5em;
+  }
+  .hero .content .center h3 {
+    font-size: 1.65em;
+  }
 }
-.hero .video .poster img {
-  width: 100%;
-  bottom: 0;
-  position: absolute;
-}
-.hero .video .filter {
-  z-index: 100;
-  position: absolute;
-  background: rgba(0,0,0,0.4);
-  width: 100%;
-}
-.hero .video video {
-  position: absolute;
-  z-index: 0;
-  bottom: 0;
-}
-.hero .video video.fillWidth {
-  width: 100%;
+@media screen and (min-width: 774px) {
+  .hero .content .center h1 {
+    margin-bottom: -0.15em;
+    font-size: 13em;
+    font-weight: 400;
+  }
+  .hero .content .center h3 {
+    margin-top: -0.15em;
+    padding-bottom: 5em;
+    font-size: 2.5em;
+    font-weight: 300;
+  }
+  .hero .content .center img {
+    position: absolute;
+    bottom: 3.5em;
+    height: 3.5em;
+    width: 3.5em;
+  }
 }
 .portfolio {
   height: 100vh;
@@ -225,9 +237,9 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -webkit-flex-wrap: no-wrap;
+      -ms-flex-wrap: no-wrap;
+          flex-wrap: no-wrap;
 }
 .profiles .quora,
 .profiles .linkedin,
@@ -237,10 +249,9 @@ body {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-align-content: space-around;
+      -ms-flex-line-pack: distribute;
+          align-content: space-around;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -248,9 +259,7 @@ body {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  height: 50vh;
-  width: 25vw;
-  max-width: 25%;
+  padding: 15px;
   text-align: center;
   -webkit-transition: 0.25s;
   transition: 0.25s;
@@ -267,6 +276,12 @@ body {
 .profiles .upwork {
   background-color: #37a000;
 }
+.profiles .quora .content,
+.profiles .linkedin .content,
+.profiles .github .content,
+.profiles .upwork .content {
+  padding: 15px;
+}
 .profiles .quora .content a,
 .profiles .linkedin .content a,
 .profiles .github .content a,
@@ -277,27 +292,95 @@ body {
 .profiles .upwork .content p {
   color: #fff;
 }
-.profiles .quora .link,
-.profiles .linkedin .link,
-.profiles .github .link,
-.profiles .upwork .link {
-  width: 100%;
+.profiles .logo,
+.profiles .content,
+.profiles .link {
+  width: 85%;
 }
-.profiles .quora .link button,
-.profiles .linkedin .link button,
-.profiles .github .link button,
-.profiles .upwork .link button {
+.profiles .link button {
   padding: 8px 24px;
   background-color: #fff;
   outline: none;
   -webkit-border-radius: 3px;
           border-radius: 3px;
   border: none;
+  color: #555;
   font-size: 0.95em;
+  font-weight: 700;
 }
-.profiles .quora .link button:hover,
-.profiles .linkedin .link button:hover,
-.profiles .github .link button:hover,
-.profiles .upwork .link button:hover {
+.profiles .link button:hover {
   text-decoration: underline;
+}
+@media screen and (orientation: portrait) and (max-width: 767px) {
+  .profiles .quora,
+  .profiles .linkedin,
+  .profiles .github,
+  .profiles .upwork {
+    height: -webkit-calc(50vh - 30px);
+    height: calc(50vh - 30px);
+    width: -webkit-calc(100vw - 30px);
+    width: calc(100vw - 30px);
+  }
+  .profiles .quora .logo img,
+  .profiles .linkedin .logo img,
+  .profiles .github .logo img,
+  .profiles .upwork .logo img {
+    max-width: 80%;
+  }
+}
+@media screen and (orientation: portrait) and (min-width: 768px) {
+  .profiles {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+  }
+  .profiles .quora,
+  .profiles .linkedin,
+  .profiles .github,
+  .profiles .upwork {
+    height: -webkit-calc(40vh - 30px);
+    height: calc(40vh - 30px);
+    width: -webkit-calc(50vw - 30px);
+    width: calc(50vw - 30px);
+  }
+  .profiles .quora .logo img,
+  .profiles .linkedin .logo img,
+  .profiles .github .logo img,
+  .profiles .upwork .logo img {
+    max-width: 80%;
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 1023px) {
+  .profiles .quora,
+  .profiles .linkedin,
+  .profiles .github,
+  .profiles .upwork {
+    height: -webkit-calc(100vh - 30px);
+    height: calc(100vh - 30px);
+    width: -webkit-calc(50vw - 30px);
+    width: calc(50vw - 30px);
+  }
+  .profiles .quora .logo img,
+  .profiles .linkedin .logo img,
+  .profiles .github .logo img,
+  .profiles .upwork .logo img {
+    max-width: 90%;
+  }
+}
+@media screen and (orientation: landscape) and (min-width: 1024px) {
+  .profiles .quora,
+  .profiles .linkedin,
+  .profiles .github,
+  .profiles .upwork {
+    height: -webkit-calc(40vh - 30px);
+    height: calc(40vh - 30px);
+    width: -webkit-calc(25vw - 30px);
+    width: calc(25vw - 30px);
+  }
+  .profiles .quora .logo img,
+  .profiles .linkedin .logo img,
+  .profiles .github .logo img,
+  .profiles .upwork .logo img {
+    max-width: 90%;
+  }
 }
