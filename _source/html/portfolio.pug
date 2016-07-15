@@ -48,4 +48,9 @@ section.portfolio
           input(type="checkbox")
           p Sports
 
-  canvas#canvas
+  canvas
+  p.watermark Portfolio
+
+  |{% for post in site.categories.portfolio %}
+  h2.title {{post.title}}
+  |{% endfor %}

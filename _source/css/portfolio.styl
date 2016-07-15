@@ -72,3 +72,22 @@
           p
             margin 0
             font-size 1em
+
+
+$margin = -100vh + 10em
+
+.watermark
+  opacity .25
+  color gray
+  font-weight 300
+  margin-top $margin
+  margin-left .5em
+
+
+@media screen and (max-height: 773px)
+  .watermark
+    font-size 3em
+
+@media screen and (min-height: 774px)
+  .watermark
+    font-size 5em

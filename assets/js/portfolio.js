@@ -30,12 +30,13 @@ function toggleCheckBoxes() {
 }
 
 
-// ---- CIRCLES ANIMATION ---- //
-function initBouncingPortfolio(width, height){
+// ---- CANVAS ---- //
+// Portfolio Circles
+function initPortfolio(width, height){
 				var canvas	= document.getElementsByTagName('canvas')[0];
 				var c = canvas.getContext('2d');
 
-				// ---- Container ---- //
+				// Container
 				// container dimensions to scale with screen size
 				var x = width;
 				var y = height - 65;
@@ -43,31 +44,33 @@ function initBouncingPortfolio(width, height){
 				canvas.height = y-5;
 				var container = {x:0,y:0,width:x-5,height:y-5};
 
-				// ---- Circles ---- //
+				// Circles
 				var circles = [];
 
 				// Portrait Variables
 				var cPos    = 200;
-				var cMargin = 55;
+				var cMargin = 75;
 				var cSpeed		= 3;
 				var r							= x*.15;
 
-				if (x > 400) {
-								cMargin = 100;
+				if (y > x && x >= 500) {
+								cPos    = x * (x / y) - 150;
+								cMargin = 150;
 				}
 
 				// Landscape Variables
 				if (x > y) {
-
 								cPos    = y * (y / x) - 50;
-								cMargin = 100;
+								cMargin = 150;
 								cSpeed		= 3;
 								r							= x*.075;
 				}
 
 				// Generating "circles" based on # of portfolio items
 				// x/y = starting coordinates, r = ball size, vx/vy = velocity
-				for (var i = 0; i < 5; i++) {
+				var posts = document.getElementsByClassName('title').length;
+				console.log(posts);
+				for (var i = 0; i < posts; i++) {
 								circles.push({
 												x:Math.random() * cPos + cMargin,
 												y:Math.random() * cPos + cMargin,
@@ -78,7 +81,7 @@ function initBouncingPortfolio(width, height){
 								});
 				}
 
-				requestAnimationFrame(draw);
+					requestAnimationFrame(draw);
 
 				function draw(){
 								c.fillStyle = 'white';

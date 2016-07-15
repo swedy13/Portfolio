@@ -2,5 +2,5 @@
 layout: project
 title:  "Pairable"
 date:   2016-07-09 13:50:56 -0500
-categories: mobile-apps entertainment surveys
+categories: portfolio mobile-apps entertainment surveys
 ---

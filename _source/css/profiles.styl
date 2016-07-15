@@ -89,7 +89,7 @@
     .quora, .linkedin, .github, .upwork
       height calc(100vh - 30px)
       width calc(50vw - 30px)
-      max-width 25%
+      max-width 50%
 
       .logo
         img
@@ -98,6 +98,8 @@
 // Tabet
 @media screen and (orientation: landscape) and (min-width: 774px)
   .profiles
+    flex-wrap no-wrap
+
     .quora, .linkedin, .github, .upwork
       height calc(40vh - 30px)
       width calc(25vw - 30px)
