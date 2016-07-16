@@ -246,6 +246,11 @@ body {
   margin: 0;
   font-size: 1em;
 }
+canvas {
+  width: 100%;
+  height: -webkit-calc(100% -65);
+  height: calc(100% -65);
+}
 .title {
   display: none;
 }

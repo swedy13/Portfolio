@@ -31,20 +31,7 @@ function toggleCheckBoxes() {
 				});
 }
 
-function initFilters() {
-				/*const classes = $('.title').map(function() {
-							const getClasses = $(this).prop('class');
-							return getClasses;
-							const toArray = getClasses.split(' ');
-							return toArray;
-							}).get();*/
-
-				/*const classes = [];
-							$.each(allClasses, function(i, el) {
-							if ($.inArray(el, classes) === -1) classes.push(el);
-							});
-							classes.sort();*/
-
+function filterItems() {
 				$('li').click(function() {
 								// Removes all active classes
 								$('.project').removeClass('active');
@@ -56,16 +43,49 @@ function initFilters() {
 												return toString;
 								}).get();
 
-								// Returns
+								// Returns portfolio items based on the filters
 								$('.project').map(function() {
 												const classes = $(this).prop('class');
-												let match = classes.match(checked);
+												const matches = [];
 
-												if (match) {
-																$(this).addClass('active')
+												// Activates portfolio items that match all filter tags
+												for (var i = 0; i < checked.length; i++) {
+																if (classes.match(checked[i])) {
+																				matches.push($(this));
+																}
 												}
 
-												initPortfolio(width, height);
+												/*console.log(matches[checked.length -1]);*/
+
+												// for (each checked item) {
+												//					if (class matches checked item name)
+												//         add item to list
+												// }
+
+												// for (each item in list) {
+												//     if (classes match all checked item names)
+												//									show item
+												// }
+												var test = matches[checked.length-1];
+
+												for (var i = 0; i < matches.length; i++) {
+																if (test != undefined) {
+																				test.addClass('active');
+																}
+												}
+
+												/*for (var i = 0; i < matches.length; i++) {
+															if (classes.match(checked)) {
+															matches[checked.length-1].addClass('active');
+															}
+															if (classes.match(checked[])) {
+															matches[checked.length-1].addClass('active');
+															$(this).addClass('active')
+															}
+															}*/
+
+												// Redraws canvas
+												initPortfolio($(window).width(), $(window).height());
 								});
 				});
 }
@@ -81,9 +101,9 @@ function initPortfolio(width, height){
 				// container dimensions to scale with screen size
 				var x = width;
 				var y = height - 65;
-				canvas.width = x-5;
-				canvas.height = y-5;
-				var container = {x:0,y:0,width:x-5,height:y-5};
+				canvas.width = x;
+				canvas.height = y;
+				var container = {x:0,y:0,width:x,height:y};
 
 				// Circles
 				var circles = [];
@@ -92,7 +112,7 @@ function initPortfolio(width, height){
 				var cPos    = 200;
 				var cMargin = 70;
 				var cSpeed		= 3;
-				var r							= x*.1;
+				var r							= x*.075;
 
 				if (y > x && x >= 500) {
 								cPos    = x * (x / y) - 150;
@@ -121,14 +141,13 @@ function initPortfolio(width, height){
 								});
 				}
 
-					requestAnimationFrame(draw);
+				requestAnimationFrame(draw);
 
 				function draw(){
 								c.fillStyle = 'white';
-								c.strokeStyle = 'red';
 								c.fillRect(container.x,container.y,container.width,container.height);
 
-								for(var i=0; i <circles.length; i++){
+								for (var i=0; i <circles.length; i++){
 												c.fillStyle = 'hsl(' + circles[i].color + ',100%,50%)';
 												c.beginPath();
 												c.arc(circles[i].x,circles[i].y,circles[i].r,0,2*Math.PI,false);

@@ -17,7 +17,7 @@ $(document).ready(function() {
 				// Portfolio Methods
 				toggleFilters();
 				toggleCheckBoxes();
-				initFilters();
+				filterItems();
 				initPortfolio(width, height);
 });
 
