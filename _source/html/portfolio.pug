@@ -6,13 +6,13 @@ section.portfolio
         .arrow-down
       ul
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Website
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Web App
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Mobile App
 
     .type
@@ -21,16 +21,16 @@ section.portfolio
         .arrow-down
       ul
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Dashboards
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Landing Pages
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Marketplace
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Social Media
 
     .industry
@@ -39,18 +39,18 @@ section.portfolio
         .arrow-down
       ul
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Business
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Entertainment
         li
-          input(type="checkbox")
+          input(class='checkbox' type="checkbox")
           p Sports
 
   canvas
   p.watermark Portfolio
 
   |{% for post in site.categories.portfolio %}
-  h2.title {{post.title}}
+  h2(class='project active {{post.categories[1]}} {{post.categories[2]}} {{post.categories[3]}} {{post.categories[4]}} {{post.categories[5]}}') {{post.title}}
   |{% endfor %}

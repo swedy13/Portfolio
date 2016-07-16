@@ -1,3 +1,4 @@
+// ---- FILTERS ---- //
 function toggleFilters() {
 				$('.filters > div').click(function(e) {
 								e.stopPropagation();
@@ -22,10 +23,50 @@ function toggleFilters() {
 }
 
 function toggleCheckBoxes() {
-				$('.filters li').click(function(e) {
+				$('.filters li').click(function() {
 								if (!$(event.target).is('input')) {
-												$(this).find('input').click();
+												var checkbox = $(this).find('input');
+												checkbox.prop('checked', !checkbox.prop('checked'));
 								}
+				});
+}
+
+function initFilters() {
+				/*const classes = $('.title').map(function() {
+							const getClasses = $(this).prop('class');
+							return getClasses;
+							const toArray = getClasses.split(' ');
+							return toArray;
+							}).get();*/
+
+				/*const classes = [];
+							$.each(allClasses, function(i, el) {
+							if ($.inArray(el, classes) === -1) classes.push(el);
+							});
+							classes.sort();*/
+
+				$('li').click(function() {
+								// Removes all active classes
+								$('.project').removeClass('active');
+
+								// Returns the names of each checked category
+								const checked = $('.checkbox:checkbox:checked').map(function() {
+												const getText = $(this).next('p').text();
+												const toString = getText.replace(/\s+/g, '-').toLowerCase();
+												return toString;
+								}).get();
+
+								// Returns
+								$('.project').map(function() {
+												const classes = $(this).prop('class');
+												let match = classes.match(checked);
+
+												if (match) {
+																$(this).addClass('active')
+												}
+
+												initPortfolio(width, height);
+								});
 				});
 }
 
@@ -49,9 +90,9 @@ function initPortfolio(width, height){
 
 				// Portrait Variables
 				var cPos    = 200;
-				var cMargin = 75;
+				var cMargin = 70;
 				var cSpeed		= 3;
-				var r							= x*.15;
+				var r							= x*.1;
 
 				if (y > x && x >= 500) {
 								cPos    = x * (x / y) - 150;
@@ -63,13 +104,12 @@ function initPortfolio(width, height){
 								cPos    = y * (y / x) - 50;
 								cMargin = 150;
 								cSpeed		= 3;
-								r							= x*.075;
+								r							= x*.05;
 				}
 
 				// Generating "circles" based on # of portfolio items
 				// x/y = starting coordinates, r = ball size, vx/vy = velocity
-				var posts = document.getElementsByClassName('title').length;
-				console.log(posts);
+				var posts = document.getElementsByClassName('active').length;
 				for (var i = 0; i < posts; i++) {
 								circles.push({
 												x:Math.random() * cPos + cMargin,

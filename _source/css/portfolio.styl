@@ -2,9 +2,11 @@
   height 100vh
 
   .filters
+    z-index 100
     display flex
     align-items center
     justify-content center
+    position relative
     height 65px
     width 100vw
     max-width 100%
@@ -74,20 +76,39 @@
             font-size 1em
 
 
+// Portfolio Content
+.title
+  display none
+
+
+// Watermark
 $margin = -100vh + 10em
+$lmargin = -100vh + 20em
 
 .watermark
   opacity .25
   color gray
   font-weight 300
-  margin-top $margin
+  // margin-top $margin
   margin-left .5em
 
 
-@media screen and (max-height: 773px)
+@media screen and (orientation: portrait) and (max-height: 773px)
   .watermark
     font-size 3em
+    margin-top $margin
 
 @media screen and (min-height: 774px)
   .watermark
     font-size 5em
+    margin-top $margin
+
+@media screen and (orientation: landscape) and (max-width: 773px)
+  .watermark
+    font-size 3em
+    margin-top $lmargin
+
+@media screen and (min-width: 774px)
+  .watermark
+    font-size 5em
+    margin-top $margin

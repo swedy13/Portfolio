@@ -123,6 +123,7 @@ body {
   height: 100vh;
 }
 .portfolio .filters {
+  z-index: 100;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -135,6 +136,7 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
   height: 65px;
   width: 100vw;
   max-width: 100%;
@@ -244,21 +246,37 @@ body {
   margin: 0;
   font-size: 1em;
 }
+.title {
+  display: none;
+}
 .watermark {
   opacity: 0.25;
   color: #808080;
   font-weight: 300;
-  margin-top: -90vh;
   margin-left: 0.5em;
 }
-@media screen and (max-height: 773px) {
+@media screen and (orientation: portrait) and (max-height: 773px) {
   .watermark {
     font-size: 3em;
+    margin-top: -90vh;
   }
 }
 @media screen and (min-height: 774px) {
   .watermark {
     font-size: 5em;
+    margin-top: -90vh;
+  }
+}
+@media screen and (orientation: landscape) and (max-width: 773px) {
+  .watermark {
+    font-size: 3em;
+    margin-top: -80vh;
+  }
+}
+@media screen and (min-width: 774px) {
+  .watermark {
+    font-size: 5em;
+    margin-top: -90vh;
   }
 }
 .profiles {
