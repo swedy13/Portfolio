@@ -8,10 +8,7 @@ function runAnimation(width, height, type){
 				var y = height - 65;
 				canvas.width = x;
 				canvas.height = y;
-				var container = {x:0,y:0,width:x,height:y};
-
-				// Circles
-				var circles = [];
+				var container = {x: 0 ,y: 0 ,width: x ,height: y};
 
 				// Portrait Variables
 				var cPos    = 200;
@@ -34,10 +31,32 @@ function runAnimation(width, height, type){
 
 
 				// ---- CIRCLES ---- //
+				// Circles
+				var circles = [];
+
 				// Generating "circles" based on # of portfolio items
 				// x/y = starting coordinates, r = ball size, vx/vy = velocity
-				var posts = document.getElementsByClassName('active').length;
-				for (var i = 0; i < posts; i++) {
+				var postIds = $( ".project" ).map(function() {
+								return $(this).text().replace(/\s+/g, '-').toLowerCase();
+				}).get();
+
+				var activePosts = document.getElementsByClassName('active').length;
+				for (var i = 0; i < activePosts; i++) {
+								circles.push({
+												id:postIds[i],
+												color:0,
+												r:r,
+												x:Math.random() * cPos + cMargin,
+												y:Math.random() * cPos + cMargin,
+												vx:Math.random() * cSpeed + .25,
+												vy:Math.random() * cSpeed + .25
+								});
+
+								assignColors(i);
+				}
+
+				// Assigns a unique color identifier to each post (for testing)
+				function assignColors(i) {
 								// 100 = green
 								// 200 = light blue
 								// 300 = pink
@@ -45,16 +64,11 @@ function runAnimation(width, height, type){
 								// 600 = blue
 								// 700 = red
 								var colors = [100, 200, 300, 400, 600, 700];
-								circles.push({
-												x:Math.random() * cPos + cMargin,
-												y:Math.random() * cPos + cMargin,
-												r:r,
-												color:colors[i],
-												vx:Math.random() * cSpeed + .25,
-												vy:Math.random() * cSpeed + .25
-								});
-				}
 
+								if (postIds[i] == circles[i].id) {
+												circles[i].color = colors[i];
+								}
+				}
 
 				// ---- DRAW ---- //
 				// Variables for the last known x/y coordinates for each object
