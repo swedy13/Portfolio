@@ -1,6 +1,19 @@
 body {
   margin: 0px;
   font-family: Roboto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+p,
+h1,
+h2,
+h3 {
+  cursor: default;
+}
+button {
+  cursor: pointer;
 }
 @media screen and (orientation: portrait) and (min-width: 768px) {
   a,

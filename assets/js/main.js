@@ -18,17 +18,13 @@ $(document).ready(function() {
 				toggleFilters();
 				toggleCheckBoxes();
 				filterItems();
-				initPortfolio(width, height);
+				runAnimation(width, height, 'all');
 });
 
 $(window).load(function() {
-
-				//invoke function init once document is fully loaded
-				window.addEventListener('load',initPortfolio,false);
-
 				$(window).resize(function() {
-								initPortfolio($(window).width(), $(window).height());
-				});
+								runAnimation($(window).width(), $(window).height(), 'canvas');
+					});
 });
 
 
