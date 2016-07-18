@@ -31,14 +31,43 @@ $(document).ready(function() {
 								$('.fillWidth').get(0).play();
 				});
 
+				// Anchor link (smooth scrolling)
+				$('img.more').click(function() {
+								var portfolio = $('.portfolio').offset().top;
+
+								$('body').animate({
+												scrollTop: portfolio
+								}, 500);
+				});
+
 
 				// Portfolio Methods
 				toggleFilters();
 				toggleCheckBoxes();
 				filterItems();
 
+				// Generates the initial canvas and objects
 				runAnimation(width, height, 'all');
+
+				// Redraws the canvas (not the objects) on resize
 				$(window).resize(function() {
 								runAnimation($(window).width(), $(window).height(), 'canvas');
+				});
+
+
+				// Profile Links
+				$('.card').click(function() {
+								if ($(this).hasClass('quora')) {
+												window.open('https://www.quora.com/profile/Mark-Swedberg', '_blank');
+								}
+								else if ($(this).hasClass('linkedin')) {
+												window.open('https://www.linkedin.com/in/markswedberg', '_blank');
+								}
+								else if ($(this).hasClass('github')) {
+												window.open('https://github.com/swedy13', '_blank');
+								}
+								else {
+												window.open('https://www.upwork.com/fl/markswedberg', '_blank');
+								}
 				});
 });

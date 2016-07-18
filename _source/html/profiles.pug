@@ -1,40 +1,52 @@
-section.profiles
-  .quora(style="background-image: url('assets/images/QuoraBG.png')")
-    .logo
-      img(src="assets/images/Quora.png")
-    .content
-      img.avatar
-      a(href="").slug /mark-swedberg
-      p.subtitle UX & Web Design since 2009
-    .link
-      button Get Answers
+section#profiles.profiles
+  .card.quora
+    .card-flipper
+      .card-front(style="background-image: url('assets/images/QuoraBG.png')")
+        .logo
+          img(src="assets/images/Quora.png")
+        .content
+          .slug /mark-swedberg
+      .card-back
+        .content
+          .avatar(style="background-image: url('assets/images/quora-avatar.jpg')")
+          p.subtitle UX & Web Design since 2009
+        button Get Answers
 
-  .linkedin(style="background-image: url('assets/images/LinkedInBG.png')")
-    .logo
-      img(src="assets/images/LinkedIn.png")
-    .content
-      img.avatar
-      a(href="").slug /markswedberg
-      p.subtitle Freelance Web Designer
-    .link
-      button View Profile
+  .card.linkedin
+    .card-flipper
+      .card-front(style="background-image: url('assets/images/LinkedInBG.png')")
+        .logo
+          img(src="assets/images/LinkedIn.png")
+        .content
+          .slug /markswedberg
+      .card-back
+        .content
+          .avatar(style="background-image: url('assets/images/linkedin-avatar.jpg')")
+          p.subtitle Freelance Web Designer
+        button View Profile
 
-  .github(style="background-image: url('assets/images/GitHubBG.png')")
-    .logo
-      img(src="assets/images/GitHub.png")
-    .content
-      img.avatar
-      a(href="").slug /swedy13
-      p.subtitle Freelance Web Designer
-    .link
-      button Browse Code
+  .card.github
+    .card-flipper
+      .card-front(style="background-image: url('assets/images/GitHubBG.png')")
+        .logo
+          img(src="assets/images/GitHub.png")
+        .content
+          .slug /swedy13
+      .card-back
+        .content
+          .avatar(style="background-image: url('assets/images/github-avatar.jpg')")
+          p.subtitle Freelance Web Designer
+        button Browse Code
 
-  .upwork(style="background-image: url('assets/images/UpworkBG.png')")
-    .logo
-      img(src="assets/images/Upwork.png")
-    .content
-      img.avatar
-      a(href="").slug /markswedberg
-      p.subtitle Freelance Web Designer
-    .link
-      button Read Reviews
+  .card.upwork
+    .card-flipper
+      .card-front(style="background-image: url('assets/images/UpworkBG.png')")
+        .logo
+          img(src="assets/images/Upwork.png")
+        .content
+          .slug /markswedberg
+      .card-back
+        .content
+          .avatar(style="background-image: url('assets/images/upwork-avatar.jpg')")
+          p.subtitle Freelance Web Designer
+        button Read Reviews

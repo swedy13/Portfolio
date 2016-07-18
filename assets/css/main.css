@@ -72,13 +72,14 @@ button {
   font-size: 1.5em;
   font-weight: 300;
 }
-.hero .content .center img {
+.hero .content .center img.more {
   position: absolute;
   bottom: 30px;
   left: -webkit-calc(50% - 1.25em);
   left: calc(50% - 1.25em);
   height: 3.5em;
   width: 3.5em;
+  cursor: pointer;
 }
 .hero .video {
   display: -webkit-box;
@@ -125,7 +126,7 @@ button {
     font-size: 2.5em;
     font-weight: 300;
   }
-  .hero .content .center img {
+  .hero .content .center img.more {
     position: absolute;
     bottom: 3.5em;
     height: 3.5em;
@@ -264,7 +265,7 @@ canvas {
   height: -webkit-calc(100% -65);
   height: calc(100% -65);
 }
-.title {
+.project {
   display: none;
 }
 .watermark {
@@ -306,17 +307,41 @@ canvas {
       -ms-flex-wrap: no-wrap;
           flex-wrap: no-wrap;
 }
-.profiles .quora,
-.profiles .linkedin,
-.profiles .github,
-.profiles .upwork {
+.profiles .card {
+  position: relative;
+  -webkit-perspective: 1000;
+          perspective: 1000;
+  cursor: pointer;
+}
+.profiles .card:hover .card-flipper {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+.profiles .card .card-flipper {
+  position: relative;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+.profiles .card .card-flipper .card-front {
+  z-index: 2;
+  -webkit-transform: rotateY(0deg);
+          transform: rotateY(0deg);
+}
+.profiles .card .card-flipper .card-back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+.profiles .card .card-flipper .card-front,
+.profiles .card .card-flipper .card-back {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-align-content: space-around;
-      -ms-flex-line-pack: distribute;
-          align-content: space-around;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
@@ -324,45 +349,53 @@ canvas {
   -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
-  padding: 15px;
   text-align: center;
-  -webkit-transition: 0.25s;
-  transition: 0.25s;
+  position: absolute;
+  -webkit-backface-visibility: hideen;
+          backface-visibility: hideen;
 }
-.profiles .quora {
-  background-color: #b92b27;
+.profiles .card .card-flipper .card-front .content,
+.profiles .card .card-flipper .card-back .content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-content: center;
+      -ms-flex-line-pack: center;
+          align-content: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  width: 100%;
 }
-.profiles .linkedin {
-  background-color: #0077b5;
-}
-.profiles .github {
-  background-color: #333;
-}
-.profiles .upwork {
-  background-color: #37a000;
-}
-.profiles .quora .content,
-.profiles .linkedin .content,
-.profiles .github .content,
-.profiles .upwork .content {
-  padding: 15px;
-}
-.profiles .quora .content a,
-.profiles .linkedin .content a,
-.profiles .github .content a,
-.profiles .upwork .content a,
-.profiles .quora .content p,
-.profiles .linkedin .content p,
-.profiles .github .content p,
-.profiles .upwork .content p {
+.profiles .card .card-flipper .card-front .content p,
+.profiles .card .card-flipper .card-back .content p,
+.profiles .card .card-flipper .card-front .content .slug,
+.profiles .card .card-flipper .card-back .content .slug {
+  width: 100%;
   color: #fff;
+  font-size: 1.2em;
 }
-.profiles .logo,
-.profiles .content,
-.profiles .link {
-  width: 85%;
+.profiles .card .card-flipper .card-front .content .avatar,
+.profiles .card .card-flipper .card-back .content .avatar {
+  height: 150px;
+  width: 150px;
+  border: 1px solid #2b2b2b;
+  -webkit-border-radius: 100%;
+          border-radius: 100%;
+  background-size: cover;
 }
-.profiles .link button {
+.profiles .card .card-flipper .card-front .logo,
+.profiles .card .card-flipper .card-back .logo {
+  margin-bottom: 10px;
+}
+.profiles .card .card-flipper .card-front button,
+.profiles .card .card-flipper .card-back button {
+  width: 50%;
   padding: 8px 24px;
   background-color: #fff;
   outline: none;
@@ -370,11 +403,24 @@ canvas {
           border-radius: 3px;
   border: none;
   color: #555;
-  font-size: 0.95em;
+  font-size: 1em;
   font-weight: 700;
+  text-decoration: none;
 }
-.profiles .link button:hover {
-  text-decoration: underline;
+.card-back {
+  background-color: #333;
+}
+.quora .card-front {
+  background-color: #b92b27;
+}
+.linkedin .card-front {
+  background-color: #0077b5;
+}
+.github .card-front {
+  background-color: #444;
+}
+.upwork .card-front {
+  background-color: #37a000;
 }
 @media screen and (orientation: portrait) and (max-width: 767px) {
   .profiles {
@@ -382,20 +428,16 @@ canvas {
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
   }
-  .profiles .quora,
-  .profiles .linkedin,
-  .profiles .github,
-  .profiles .upwork {
-    height: -webkit-calc(50vh - 30px);
-    height: calc(50vh - 30px);
-    width: -webkit-calc(100vw - 30px);
-    width: calc(100vw - 30px);
-  }
-  .profiles .quora .logo img,
-  .profiles .linkedin .logo img,
-  .profiles .github .logo img,
-  .profiles .upwork .logo img {
+  .profiles .card .card-flipper .card-front .logo img,
+  .profiles .card .card-flipper .card-back .logo img {
     max-width: 80%;
+  }
+  .card,
+  .link,
+  .card-front,
+  .card-back {
+    height: 50vh;
+    width: 100vw;
   }
 }
 @media screen and (orientation: portrait) and (min-width: 768px) {
@@ -404,22 +446,17 @@ canvas {
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
   }
-  .profiles .quora,
-  .profiles .linkedin,
-  .profiles .github,
-  .profiles .upwork {
-    height: -webkit-calc(40vh - 30px);
-    height: calc(40vh - 30px);
-    width: -webkit-calc(50vw - 30px);
-    width: calc(50vw - 30px);
-    max-width: -webkit-calc(50% - 30px);
-    max-width: calc(50% - 30px);
-  }
-  .profiles .quora .logo img,
-  .profiles .linkedin .logo img,
-  .profiles .github .logo img,
-  .profiles .upwork .logo img {
+  .profiles .card .card-flipper .card-front .logo img,
+  .profiles .card .card-flipper .card-back .logo img {
     max-width: 80%;
+  }
+  .card,
+  .link,
+  .card-front,
+  .card-back {
+    height: 40vh;
+    width: 50vw;
+    max-width: 100%;
   }
 }
 @media screen and (orientation: landscape) and (max-width: 773px) {
@@ -432,21 +469,16 @@ canvas {
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
   }
-  .profiles .quora,
-  .profiles .linkedin,
-  .profiles .github,
-  .profiles .upwork {
-    height: -webkit-calc(100vh - 30px);
-    height: calc(100vh - 30px);
-    width: -webkit-calc(50vw - 30px);
-    width: calc(50vw - 30px);
-    max-width: 50%;
-  }
-  .profiles .quora .logo img,
-  .profiles .linkedin .logo img,
-  .profiles .github .logo img,
-  .profiles .upwork .logo img {
+  .profiles .card .card-flipper .card-front .logo img,
+  .profiles .card .card-flipper .card-back .logo img {
     max-width: 90%;
+  }
+  .card,
+  .link,
+  .card-front,
+  .card-back {
+    height: 100vh;
+    width: 50vw;
   }
 }
 @media screen and (orientation: landscape) and (min-width: 774px) {
@@ -455,19 +487,16 @@ canvas {
         -ms-flex-wrap: no-wrap;
             flex-wrap: no-wrap;
   }
-  .profiles .quora,
-  .profiles .linkedin,
-  .profiles .github,
-  .profiles .upwork {
-    height: -webkit-calc(40vh - 30px);
-    height: calc(40vh - 30px);
-    width: -webkit-calc(25vw - 30px);
-    width: calc(25vw - 30px);
-  }
-  .profiles .quora .logo img,
-  .profiles .linkedin .logo img,
-  .profiles .github .logo img,
-  .profiles .upwork .logo img {
+  .profiles .card .card-flipper .card-front .logo img,
+  .profiles .card .card-flipper .card-back .logo img {
     max-width: 90%;
+  }
+  .card,
+  .link,
+  .card-front,
+  .card-back {
+    height: 40vh;
+    width: 25vw;
+    max-width: 100%;
   }
 }

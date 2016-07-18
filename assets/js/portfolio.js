@@ -8,7 +8,7 @@ function runAnimation(width, height, type){
 				var y = height - 65;
 				canvas.width = x;
 				canvas.height = y;
-				var container = {x: 0 ,y: 0 ,width: x ,height: y};
+				var container = {x: 0 ,y: 0 ,width: x, height: y};
 
 				// Portrait Variables
 				var cPos    = 200;
@@ -34,17 +34,17 @@ function runAnimation(width, height, type){
 				// Circles
 				var circles = [];
 
-				// Generating "circles" based on # of portfolio items
-				// x/y = starting coordinates, r = ball size, vx/vy = velocity
-				var postIds = $( ".project" ).map(function() {
+				// Gets active post ids and count
+				var activePosts = $('.active').map(function() {
 								return $(this).text().replace(/\s+/g, '-').toLowerCase();
-				}).get();
+				});
+				var activeLength = $('.active').length;
 
-				var activePosts = document.getElementsByClassName('active').length;
-				for (var i = 0; i < activePosts; i++) {
+				// Populates circle data
+				for (var i = 0; i < activeLength; i++) {
 								circles.push({
-												id:postIds[i],
-												color:0,
+												id:activePosts[i],
+												color:'',
 												r:r,
 												x:Math.random() * cPos + cMargin,
 												y:Math.random() * cPos + cMargin,
@@ -52,58 +52,48 @@ function runAnimation(width, height, type){
 												vy:Math.random() * cSpeed + .25
 								});
 
-								assignColors(i);
-				}
-
-				// Assigns a unique color identifier to each post (for testing)
-				function assignColors(i) {
-								// 100 = green
-								// 200 = light blue
-								// 300 = pink
-								// 400 = orange
-								// 600 = blue
-								// 700 = red
-								var colors = [100, 200, 300, 400, 600, 700];
-
-								if (postIds[i] == circles[i].id) {
-												circles[i].color = colors[i];
+								// Special color configuration (for testing)
+								if (circles[i].id === 'ats-coaching') {
+												circles[i].color = 100;
+								}
+								if (circles[i].id === 'dataqlick') {
+												circles[i].color = 200;
+								}
+								if (circles[i].id === 'movie.tv') {
+												circles[i].color = 300;
+								}
+								if (circles[i].id === 'pairable') {
+												circles[i].color = 400;
+								}
+								if (circles[i].id === 'smartprofyl') {
+												circles[i].color = 600;
+								}
+								if (circles[i].id === 'testing-agency') {
+												circles[i].color = 700;
 								}
 				}
 
-				// ---- DRAW ---- //
-				// Variables for the last known x/y coordinates for each object
-				var lastX = [];
-				var lastY = [];
 
+				// ---- DRAW ---- //
 				requestAnimationFrame(draw);
 				function draw(){
 								c.fillStyle = 'white';
-								c.fillRect(container.x,container.y,container.width,container.height);
+								c.fillRect(container.x, container.y, container.width, container.height);
 
-								for (var i = 0; i <circles.length; i++){
+								for (var i = 0; i < circles.length; i++){
 												c.fillStyle = 'hsl(' + circles[i].color + ', 100%, 50%)';
 												c.beginPath();
-
-												// This only redraws
-												if (type === 'canvas') {
-																c.arc(circles[i].lastX,circles[i].lastY,circles[i].r,0,2*Math.PI,false);
-												}
-
-												c.arc(circles[i].x,circles[i].y,circles[i].r,0,2*Math.PI,false);
+												c.arc(circles[i].x, circles[i].y, circles[i].r, 0, 2*Math.PI, false);
 												c.fill();
 
-												// Saves x/y coordinates to outside variables
-												lastX[i] = circles[i].x;
-												lastY[i] = circles[i].y;
-
 												// If the circle size/position is greater than the canvas width, bounce x
-												if ((circles[i].x + circles[i].vx + circles[i].r > container.x + container.width) || (circles[i].x - circles[i].r + circles[i].vx < container.x)) {
-																circles[i].vx = - circles[i].vx;
+												if ((circles[i].x + circles[i].vx + circles[i].r > container.width) || (circles[i].x - circles[i].r + circles[i].vx < container.x)) {
+																circles[i].vx = -circles[i].vx;
 												}
 
 												// If the circle size/position is greater than the canvas width, bounce y
-												if ((circles[i].y + circles[i].vy + circles[i].r > container.y + container.height) || (circles[i].y - circles[i].r + circles[i].vy < container.y)){
-																circles[i].vy = - circles[i].vy;
+												if ((circles[i].y + circles[i].vy + circles[i].r > container.height) || (circles[i].y - circles[i].r + circles[i].vy < container.y)){
+																circles[i].vy = -circles[i].vy;
 												}
 
 												// Generates circle motion by adding position and velocity each frame
