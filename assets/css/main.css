@@ -265,9 +265,6 @@ canvas {
   height: -webkit-calc(100% -65);
   height: calc(100% -65);
 }
-.project {
-  display: none;
-}
 .watermark {
   opacity: 0.25;
   color: #808080;
@@ -306,6 +303,7 @@ canvas {
   -webkit-flex-wrap: no-wrap;
       -ms-flex-wrap: no-wrap;
           flex-wrap: no-wrap;
+  background-color: #bbb;
 }
 .profiles .card {
   position: relative;
@@ -384,10 +382,12 @@ canvas {
 .profiles .card .card-flipper .card-back .content .avatar {
   height: 150px;
   width: 150px;
-  border: 1px solid #2b2b2b;
+  border: 1px solid #555;
   -webkit-border-radius: 100%;
           border-radius: 100%;
   background-size: cover;
+  -webkit-box-shadow: 0 3px 5px 5px #4d4d4d;
+          box-shadow: 0 3px 5px 5px #4d4d4d;
 }
 .profiles .card .card-flipper .card-front .logo,
 .profiles .card .card-flipper .card-back .logo {
@@ -401,14 +401,16 @@ canvas {
   outline: none;
   -webkit-border-radius: 3px;
           border-radius: 3px;
-  border: none;
+  border: 1px solid #555;
+  -webkit-box-shadow: 0 3px 5px 5px #4d4d4d;
+          box-shadow: 0 3px 5px 5px #4d4d4d;
   color: #555;
   font-size: 1em;
   font-weight: 700;
   text-decoration: none;
 }
 .card-back {
-  background-color: #333;
+  background-color: #555;
 }
 .quora .card-front {
   background-color: #b92b27;
@@ -417,7 +419,7 @@ canvas {
   background-color: #0077b5;
 }
 .github .card-front {
-  background-color: #444;
+  background-color: #222;
 }
 .upwork .card-front {
   background-color: #37a000;

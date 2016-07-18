@@ -34,7 +34,7 @@ function toggleCheckBoxes() {
 function filterItems() {
 				$('li').click(function() {
 								// Removes all active classes
-								$('.project').removeClass('active');
+								$('.company').removeClass('active');
 
 								// Returns the names of each checked category
 								const checked = $('.checkbox:checkbox:checked').map(function() {
@@ -46,12 +46,12 @@ function filterItems() {
 								// Determines which objects to show
 								if (checked.length === 0) {
 												// Activates all objects if no filters are selected
-												$('.project').addClass('active');
+												$('.company').addClass('active');
 								}
 
 								else {
 												// Returns portfolio items based on the filters
-												$('.project').map(function() {
+												$('.company').map(function() {
 																const classes = $(this).prop('class');
 																const matches = [];
 

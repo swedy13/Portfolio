@@ -51,6 +51,8 @@ section#portfolio.portfolio
   canvas
   p.watermark Portfolio
 
-  |{% for post in site.categories.portfolio %}
-  h2(class='project active {{post.categories[1]}} {{post.categories[2]}} {{post.categories[3]}} {{post.categories[4]}} {{post.categories[5]}}') {{post.title}}
+  |{% for post in site.categories.company %}
+  div(class='active {{post.categories | join: ' '}}')
+    image(class="company-logo" src="assets/images/posts/thumbnails/{{post.thumbnail}}")
+    h2.company-name {{post.title}}
   |{% endfor %}
